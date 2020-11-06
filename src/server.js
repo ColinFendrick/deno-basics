@@ -1,14 +1,24 @@
 import { serve } from 'https://deno.land/std/http/server.ts';
 
-export default () => {
-	const server = serve({
-		port: 8000
-	});
+export default url => {
+	const server = serve({ port: 8000 });
 	console.log('Server is listening on port 8000');
+
+	// const url = 'http://hn.algolia.com/api/v1/search?query=javascript';
 
 	(async () => {
 		for await (const req of server) {
-			req.respond({ body: 'Hello Deno' });
+			const result = await fetch(url).then((result) => result.json());
+
+			const stories = result.hits.map((hit) => ({
+				title: hit.title,
+				url: hit.url,
+				createdAt: hit.created_at_i
+			}));
+
+			req.respond({
+				body: JSON.stringify(stories)
+			});
 		}
 	})();
 };

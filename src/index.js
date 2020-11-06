@@ -1,5 +1,7 @@
-import hackerNews from './hacker-news-req.js';
+import { config } from 'https://deno.land/x/dotenv/mod.ts';
+
+const { HACKERNEWS_URL } = config({ path: './config/dev.env' });
+
 import server from './server.js';
 
-hackerNews();
-server();
+server(HACKERNEWS_URL);
