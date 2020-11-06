@@ -1,4 +1,5 @@
 import { serve } from 'https://deno.land/std/http/server.ts';
+import format from 'https://deno.land/x/date_fns/format/index.js';
 
 export default url => {
 	const server = serve({ port: 8000 });
@@ -11,7 +12,10 @@ export default url => {
 			const stories = result.hits.map((hit) => ({
 				title: hit.title,
 				url: hit.url,
-				createdAt: hit.created_at_i
+				createdAt: format(
+					new Date(hit.created_at_i * 1000),
+					'yyyy-MM-dd'
+				)
 			}));
 
 			req.respond({
