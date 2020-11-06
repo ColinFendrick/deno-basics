@@ -1,14 +1,5 @@
-const url = 'http://hn.algolia.com/api/v1/search?query=javascript';
+import hackerNews from './hacker-news-req.js';
+import server from './server.js';
 
-const result = await fetch(url)
-	.then((result) => result.json());
-
-const stories = result.hits.map((hit) => ({
-	title: hit.title,
-	url: hit.url,
-	createdAt: hit.created_at_i
-}));
-
-console.log(stories, `
-	Deno can access window? ... ${!!window}
-`);
+hackerNews();
+server();
