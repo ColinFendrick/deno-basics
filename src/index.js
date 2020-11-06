@@ -1,7 +1,9 @@
 import { config } from 'https://deno.land/x/dotenv/mod.ts';
 
-const { HACKERNEWS_URL } = config({ path: './config/dev.env' });
+const envPath = Deno.env.get('ENV_PATH');
+
+const { URL } = config({ path: `./config/${envPath}` });
 
 import server from './server.js';
 
-server(HACKERNEWS_URL);
+server(URL);

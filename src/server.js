@@ -4,8 +4,6 @@ export default url => {
 	const server = serve({ port: 8000 });
 	console.log('Server is listening on port 8000');
 
-	// const url = 'http://hn.algolia.com/api/v1/search?query=javascript';
-
 	(async () => {
 		for await (const req of server) {
 			const result = await fetch(url).then((result) => result.json());

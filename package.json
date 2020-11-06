@@ -4,7 +4,9 @@
   "description": "Learning the basics of deno",
   "main": "index.js",
   "scripts": {
-    "start:dev": "deno run --allow-read --allow-net ./src/index.js",
+    "start:dev": "ENV_PATH=dev.env npm run serve",
+    "start:prod": "ENV_PATH=prod.env npm run serve",
+    "serve": "deno run --allow-read --allow-net --allow-env ./src/index.js",
     "build": "./node_modules/.bin/babel src --out-dir lib"
   },
   "keywords": [
