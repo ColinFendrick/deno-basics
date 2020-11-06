@@ -48,6 +48,7 @@
       "error",
       "single"
     ],
+    "arrow-parens": ["error", "as-needed"],
     "eol-last": ["error", "always"],
     "no-multiple-empty-lines": ["error", {
       "max": 2,
