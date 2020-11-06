@@ -4,7 +4,8 @@
   "description": "Learning the basics of deno",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start:dev": "env-cmd -f ./config/dev.env deno run --allow-net ./src/index.js",
+    "build":  "./node_modules/.bin/babel src --out-dir lib"
   },
   "keywords": [
     "deno",
@@ -13,6 +14,16 @@
   "author": "cfendrick",
   "license": "ISC",
   "devDependencies": {
+    "@babel/cli": "^7.12.1",
+    "@babel/core": "^7.12.3",
+    "@babel/parser": "^7.12.5",
+    "@babel/plugin-syntax-top-level-await": "^7.12.1",
+    "@babel/preset-env": "^7.12.1",
+    "babel-eslint": "^11.0.0-beta.0",
     "eslint": "^7.12.1"
+  },
+  "dependencies": {
+    "@babel/polyfill": "^7.12.1",
+    "env-cmd": "^10.1.0"
   }
 }

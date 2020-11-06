@@ -9,8 +9,10 @@
   },
   "extends": "eslint:recommended",
   "parserOptions": {
-    "ecmaVersion": 12
+    "ecmaVersion": 12,
+    "allowAwaitOutsideFunction": true
   },
+  "parser": "babel-eslint",
   "rules": {
     "indent": [
       "error",
@@ -60,6 +62,6 @@
         "int32Hint": false
       }
     ],
-    "no-unused-vars": 0
+    "no-unused-vars": ["error", { "vars": "local" }]
   }
 }
